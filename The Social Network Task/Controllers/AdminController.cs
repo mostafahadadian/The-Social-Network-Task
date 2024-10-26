@@ -61,9 +61,11 @@ public class AdminController : Controller
 
 
     [HttpGet]
+    [AllowAnonymous]
     public IActionResult Create() => View();
 
     [HttpPost]
+    [AllowAnonymous]
     public async Task<IActionResult> Create(CreateModel createModel)
     {
         if (ModelState.IsValid)
