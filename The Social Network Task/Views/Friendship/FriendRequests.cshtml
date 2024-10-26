@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Friendship>
+
+@{
+    ViewBag.Title = "Pending Friend Requests";
+}
+
+<h2>Pending Friend Requests</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>User</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var request in Model)
+        {
+            <tr>
+                <td>@request.UserId</td>
+                <td>Pending</td>
+                <td>
+                    <form asp-action="RejectRequest" method="post" style="display:inline;">
+                        <input type="hidden" name="id" value="@request.FriendId" />
+                        <button type="submit" class="btn btn-danger">Reject</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

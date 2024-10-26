@@ -1,0 +1,44 @@
+﻿
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/lib/twitter-bootstrap/css/bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="d-flex">
+        <nav class="nav flex-column bg-light p-3" style="width: 200px; height: 100vh;">
+            <a class="navbar-brand mb-4" href="/">Social Application</a>
+            <a class="nav-link" asp-controller="Friendship" asp-action="Requests">Friendship Requests</a>
+            <a class="nav-link" asp-controller="User" asp-action="Index">All Users</a>
+            <a class="nav-link" asp-controller="Friendship" asp-action="FriendsList">My Friends</a>
+            <a class="nav-link" asp-controller="Friendship" asp-action="SentFriendRequests">Sent Friend Requests</a>
+           
+            @if (User.Identity.IsAuthenticated)
+            {
+                <div class="mt-4">
+                    <span class="nav-link disabled">Welcome, <strong>@User.Identity.Name</strong>!</span>
+                    <form asp-controller="Account" asp-action="Logout" method="post">
+                        <button type="submit" class="btn btn-link nav-link">Logout</button>
+                    </form>
+                    <a class="nav-link" asp-controller="Admin" asp-action="Index">Admin</a>
+                </div>
+            }
+            else
+            {
+                <a class="nav-link" asp-controller="Account" asp-action="Login">Login</a>
+                <a class="nav-link" asp-controller="Account" asp-action="Create">Register</a>
+            }
+        </nav>
+
+        <div class="flex-grow-1 p-4">
+            @RenderBody()
+        </div>
+    </div>
+
+    <script src="~/lib/jquery/jquery.min.js"></script>
+    <script src="~/lib/twitter-bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

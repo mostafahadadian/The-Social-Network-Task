@@ -1,0 +1,38 @@
+﻿@* <div class="bg-primary m-1 p-1 text-white"><h4>Create Role</h4></div>
+<div asp-validation-summary="All" class="text-danger"></div>
+<form asp-action="Create" method="post">
+    <div class="form-control">
+        <label for="rolename"></label>
+        <input name="rolename" id="rolename" class="form-control" />
+    </div>
+   
+    <button type="submit" class="btn btn-primary">Create</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form> *@
+
+
+<div class="container mt-5">
+    <div class="bg-primary text-white text-center rounded-top py-2">
+        <h4>Create Role</h4>
+    </div>
+
+    <div class="card shadow-sm rounded-bottom">
+        <div class="card-body">
+            <div asp-validation-summary="All" class="text-danger mb-3"></div>
+
+            <form asp-action="Create" method="post">
+                <div class="form-group mb-3">
+                    <label for="rolename" class="form-label">Role Name</label>
+                    <input name="rolename" id="rolename" class="form-control" placeholder="Enter role name" />
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary w-50">Create</button>
+                </div>
+                <div class="text-center mt-2">
+                    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

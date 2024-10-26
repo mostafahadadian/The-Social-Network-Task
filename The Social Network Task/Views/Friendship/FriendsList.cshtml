@@ -1,0 +1,30 @@
+﻿@model IEnumerable<User>
+
+@{
+    ViewBag.Title = "My Friends";
+}
+
+<h2>My Friends</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var friend in Model)
+        {
+            <tr>
+                <td>@friend.UserName</td>
+                <td>
+                    <form asp-controller="Friendship" asp-action="Unfriend" method="post">
+                        <input type="hidden" name="Id" value="@friend.Id" />
+                        <button type="submit" class="btn btn-danger">Unfriend</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
